@@ -1,0 +1,75 @@
+
+<head>
+
+	<title>Login de Usuario</title>	
+	<meta charset="UTF-8" />	
+	<link rel="stylesheet" type="text/css" media="screen" href="~/css/StyleRegisterUser.css" />
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+	<style>
+
+		div#container {
+			position: relative;
+			background: rgba(220, 198, 190, 0.797);
+			margin: 5px;
+			left: 250px;
+			width: 640px;
+			height: 300px;
+			border: 1px black solid;
+			border-radius: 15px;
+			box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+			opacity: 0.9;
+		}
+		
+		div#form {
+			position: relative;
+			right: 50px;
+			margin: 20px;
+			top: 10px;
+			left: 50px;
+			width: 500px;
+			opacity: 0.9;
+		}
+
+	</style>
+
+
+    @model mejorprecio.MVC.Models.LoginViewModel
+
+
+    @if (!ViewData.ModelState.IsValid) {
+        <div class="error" style="color: red">User o password incorrectos</div>
+    }
+	
+	<div id="container">
+			<div id=form>
+			<h2>User Login:</h2>
+			<br>
+            <form method="post">
+                <div class ="form-group">
+				<label id="Email">UserName: </label>
+				<input type="text"  class="form-control" name="username" value="@Model.Username"  placeholder="Enter User" required >
+                </div>
+                <div class ="form-group">
+                <label id="Password">Password: </label>
+				<input type="Password"  class="form-control"  name="password" placeholder="Enter Password" required >  
+                </div>
+                <div class ="form-group">
+                <input type="submit" value="Login" class="btn btn-info btn-block">
+                </div>
+            </form>
+			
+			</div>
+	</div>
+
+
+</body>
+</html>

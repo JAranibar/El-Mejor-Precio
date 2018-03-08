@@ -1,0 +1,64 @@
+@model List<UserViewModel>
+
+@{
+    ViewData["Title"] = "Gestion Users";
+}  
+
+<html>
+
+@section Head {        
+    <title>Gestionador de Usuario</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/css/StyleRegisterUser.css" />
+}
+
+<body>
+    <h3>Usuarios Registrados</h3>
+
+    <table border="5" class="table" style="background-color: rgb(212, 255, 0)">
+        <tr>
+            <th>Usuario</th>
+            <th>E-Mail</th>
+            <th>Role</th>
+            <th>Name</th>
+            <th>LastName</th>
+            <th>DNI</th>
+            <th>Score</th>
+            <th>Action</th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr style="background-color: rgb(239, 242, 242)">
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+
+            <td>
+                <form action="/Users/changeRole" method="ChangeRole">
+                <select name="newRole" type="number" style="background-color: rgb(206, 249, 241)">
+                    <option disabled selected value="">@item.Role</option>
+                    <option value="1">User No Validado</option> 
+                    <option value="2">User Validado</option>
+                    <option value="3">Moderador</option> 
+                    <option value="4">Administrador</option> 
+                </select>        
+                <button type="submit"  value=@item.UserName name="userCambiado" style="background-color: rgb(138, 200, 190)" >Change</button>      
+                </form>  
+            </td>
+
+            <td>@item.Name</td>
+            <td>@item.LastName</td>
+            <td>@item.DNI</td>
+            <td>@item.Score</td>
+            <td>
+                <form action="/Users/delete" method="DELETE">
+                    <button type="submit" value=@item.UserName name="user" style="background-color: rgb(210, 120, 120)" >Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </table>
+
+</body>
+
+
+</html>

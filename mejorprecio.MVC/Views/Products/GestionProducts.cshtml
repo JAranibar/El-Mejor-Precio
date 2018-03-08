@@ -1,0 +1,47 @@
+@model List<PriceViewModel>
+@{
+    ViewData["Title"] = "Products";
+}
+
+@section Head {
+<link rel="stylesheet" type="text/css" media="screen" href="~/css/StyleRegisterProd.css" />
+}
+
+<style>
+    
+	div#container {
+		position: relative;
+		left: 280px;
+	}
+</style>
+
+
+<div id=container>
+<table  border="5" style="background-color: rgb(212, 255, 0)">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Direccion</th>
+            <th>User</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr style="background-color: rgb(239, 242, 242)">
+                <td>@product.Product.Name</td>
+                <td>@product.Value</td>
+                <td>@product.Location.Address</td>
+                <td>@product.NameUser</td>
+                <td>
+                    <form action="/Products/delete" method="DELETE">
+                        <button type="submit" value=@product.IdPrice name="idPrice" style="background-color: rgb(210, 120, 120)">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

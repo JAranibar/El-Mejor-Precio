@@ -1,0 +1,49 @@
+<html>
+<head>
+        @{
+            ViewData["Title"] = "Users";
+        }    
+    	<title>Gestionador de Usuario</title>
+        <meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" media="screen" href="~/css/StyleRegisterUser.css" />
+
+</head>
+
+@model List<UserViewModel>
+
+<body>
+
+    <h3>Usuarios Registrados</h3>
+
+    <table border="5" class="table" style="background-color: rgb(212, 255, 0)">
+        <tr>
+            <th>Usuario</th>
+            <th>E-Mail</th>
+            <th>Name</th>
+            <th>LastName</th>
+            <th>DNI</th>
+            <th>Score</th>
+            <th>Action</th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr style="background-color: rgb(239, 242, 242)">
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.Name</td>
+            <td>@item.LastName</td>
+            <td>@item.DNI</td>
+            <td>@item.Score</td>
+            <td>
+                <form action="/Users/validateUser" method="ChangeRole">
+                <button type="submit"  value=@item.UserName name="userCambiado" style="background-color: rgb(0, 208, 255)" >Validate</button>      
+                </form>  
+            </td>
+        </tr>
+    }
+    </table>
+
+</body>
+
+
+</html>

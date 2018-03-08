@@ -1,0 +1,30 @@
+@model List<PriceViewModel>
+@{
+    ViewData["Title"] = "Home";
+}
+
+
+@section Head {
+<link rel="stylesheet" type="text/css" media="screen" href="~/css/StyleRegisterProd.css" />
+}
+
+<body>
+    <div id="Mapa"></div>
+
+    @section Scripts {
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3hF3X-q1xSqkJekT1cRa5LiALeEb4rqw"></script>
+        <script src="~/js/GoogleMaps.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                @foreach (var product in @Model) 
+                {
+                    <text>
+                    addMarker("@product.Location.Address", "@product.Location.Local", "@product.Value", "@product.Product.Name", "@product.Date");
+                    </text>
+                }
+            });
+        </script>
+</body>
+
+}
